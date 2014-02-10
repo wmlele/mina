@@ -265,6 +265,21 @@ module Mina
       settings.send :"#{key}=", value
     end
 
+    # ### unset
+    # Unsets settings.
+    # Unsets given symbol `key`
+    #
+    # Returns the value.
+    #
+    #     set :domain, 'kickflip.me'
+    #     settings.domain  #=> 'kickflip.me'
+    #     unset :domain
+    #     settings.domain  #=> nil
+
+    def unset(key)
+      settings.delete key if settings.key? key
+    end
+
     # ### set_default
     # Sets default settings.
     # Sets given symbol `key` to value in `value` only if the key isn't set yet.
