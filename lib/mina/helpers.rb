@@ -82,6 +82,15 @@ module Mina
       [Time.now - t, output]
     end
 
+    # ### local
+    # Execute `command` in local.
+
+    def local(command)
+      system command
+      result = $?.to_id
+      die result if result.is_a?(Fixnum) && result > 0
+    end
+
     # ### mina_cleanup
     # __Internal:__ Invoked when Rake exits.
     #
